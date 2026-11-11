@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fagiolo Matto – Bottega alimentare di quartiere</title>
+<meta name="description" content="Fagiolo Matto è la bottega dove trovi un po’ di tutto: frutta, pane, salumi, formaggi, dispensa, bevande e prodotti per la casa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef3e2; --ink:#1b2a1f; --green:#1f4d3a; --beet:#b3124f; --mustard:#f2b705; --paper:#fbfdf6;
+  --head:"Bricolage Grotesque","Trebuchet MS",sans-serif; --body:"Figtree","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--beet);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0}
+.logo{font:800 1.35rem var(--head);text-decoration:none;color:var(--green)}
+nav a{margin-left:1.25rem;text-decoration:none;font-weight:600}
+nav a:hover{color:var(--beet)}
+
+.hero{padding:3rem 0 4rem}
+.hero h1{font-size:clamp(3rem,11vw,7.5rem);font-weight:800;color:var(--green);letter-spacing:-.03em}
+.hero h1 span{display:block;color:var(--beet)}
+.hero p{max-width:34rem;font-size:1.2rem;margin:1.5rem 0 2rem}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none}
+.btn:hover{background:var(--beet)}
+.tag{display:inline-block;background:var(--mustard);padding:.35rem .9rem;border-radius:6px;font-weight:600;transform:rotate(-2deg);margin-bottom:1.25rem}
+
+section{padding:3.5rem 0}
+.shelf{background:var(--green);color:#fff;border-radius:28px 28px 0 0}
+.shelf h2,.info h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.5rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filters button{font:600 1rem var(--body);border:2px solid #fff;background:transparent;color:#fff;padding:.45rem 1.1rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--mustard);border-color:var(--mustard);color:var(--ink)}
+.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.items li{background:var(--paper);color:var(--ink);border-radius:14px;padding:1rem 1.1rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.items li[hidden]{display:none}
+.items b{font-family:var(--head);font-size:1.1rem}
+.items small{display:block;color:#51604f}
+.price{font:800 1.15rem var(--head);color:var(--beet);white-space:nowrap}
+
+.info .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
+.info h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--green)}
+.info ul{list-style:none;margin:0;padding:0}
+.info li{display:flex;justify-content:space-between;border-bottom:1px dashed #9cae9a;padding:.3rem 0}
+
+footer{background:var(--ink);color:#d9e4d3;padding:2rem 0;font-size:.95rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">Fagiolo Matto</a>
+    <nav><a href="#reparti">Reparti</a><a href="#info">Orari e contatti</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="tag">Bottega di quartiere</span>
+      <h1>Un po’ di tutto,<span>quasi matto.</span></h1>
+      <p>Frutta di stagione, pane caldo, formaggi, pasta, bevande e tutto quello che ti serve per la casa. Passa a trovarci o chiedi la spesa a domicilio.</p>
+      <a class="btn" href="#reparti">Guarda i reparti</a>
+    </div>
+  </main>
+</div>
+
+<section class="shelf" id="reparti">
+  <div class="wrap">
+    <h2>Cosa trovi da noi</h2>
+    <div class="filters" role="group" aria-label="Filtra per reparto">
+      <button type="button" data-f="tutti" aria-pressed="true">Tutti</button>
+      <button type="button" data-f="frutta" aria-pressed="false">Frutta e verdura</button>
+      <button type="button" data-f="pane" aria-pressed="false">Pane e dolci</button>
+      <button type="button" data-f="salumi" aria-pressed="false">Salumi e formaggi</button>
+      <button type="button" data-f="dispensa" aria-pressed="false">Dispensa</button>
+      <button type="button" data-f="bevande" aria-pressed="false">Bevande</button>
+      <button type="button" data-f="casa" aria-pressed="false">Casa</button>
+    </div>
+    <ul class="items" id="items">
+      <li data-c="frutta"><span><b>Mele rosse</b><small>al kg</small></span><span class="price">2,20 €</span></li>
+      <li data-c="frutta"><span><b>Pomodori datterini</b><small>al kg</small></span><span class="price">3,90 €</span></li>
+      <li data-c="frutta"><span><b>Insalata fresca</b><small>a cespo</small></span><span class="price">1,50 €</span></li>
+      <li data-c="pane"><span><b>Pane a lievitazione lenta</b><small>500 g</small></span><span class="price">2,80 €</span></li>
+      <li data-c="pane"><span><b>Biscotti al burro</b><small>confezione 300 g</small></span><span class="price">3,20 €</span></li>
+      <li data-c="pane"><span><b>Crostata di albicocche</b><small>intera</small></span><span class="price">9,50 €</span></li>
+      <li data-c="salumi"><span><b>Prosciutto cotto</b><small>all’etto</small></span><span class="price">2,60 €</span></li>
+      <li data-c="salumi"><span><b>Parmigiano stagionato</b><small>all’etto</small></span><span class="price">3,40 €</span></li>
+      <li data-c="salumi"><span><b>Mozzarella</b><small>125 g</small></span><span class="price">1,30 €</span></li>
+      <li data-c="dispensa"><span><b>Pasta di semola</b><small>500 g</small></span><span class="price">1,40 €</span></li>
+      <li data-c="dispensa"><span><b>Olio extravergine</b><small>bottiglia 750 ml</small></span><span class="price">8,90 €</span></li>
+      <li data-c="dispensa"><span><b>Passata di pomodoro</b><small>barattolo 700 g</small></span><span class="price">1,70 €</span></li>
+      <li data-c="bevande"><span><b>Acqua naturale</b><small>confezione da 6</small></span><span class="price">2,10 €</span></li>
+      <li data-c="bevande"><span><b>Succo di pera</b><small>bottiglia 1 l</small></span><span class="price">2,40 €</span></li>
+      <li data-c="bevande"><span><b>Vino rosso della casa</b><small>bottiglia 75 cl</small></span><span class="price">6,50 €</span></li>
+      <li data-c="casa"><span><b>Detersivo per piatti</b><small>flacone 1 l</small></span><span class="price">2,30 €</span></li>
+      <li data-c="casa"><span><b>Carta da cucina</b><small>2 rotoli</small></span><span class="price">2,00 €</span></li>
+      <li data-c="casa"><span><b>Sacchetti per l’umido</b><small>20 pezzi</small></span><span class="price">1,60 €</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="info" id="info">
+  <div class="wrap">
+    <h2>Vieni a trovarci</h2>
+    <div class="grid">
+      <div>
+        <h3>Orari</h3>
+        <ul>
+          <li><span>Lunedì – Venerdì</span><span>8:00 – 19:30</span></li>
+          <li><span>Sabato</span><span>8:00 – 13:00</span></li>
+          <li><span>Domenica</span><span>chiuso</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dove siamo</h3>
+        <p>Via dei Girasoli 12<br>00000 La tua città</p>
+      </div>
+      <div>
+        <h3>Contatti</h3>
+        <p>Tel. <a href="tel:+390000000000">00 0000 0000</a><br>
+        <a href="mailto:ciao@fagiolomatto.it">ciao@fagiolomatto.it</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="y">2026</span> Fagiolo Matto. Prezzi indicativi, possono variare in negozio.</div>
+</footer>
+
+<script>
+(function(){
+  var buttons=document.querySelectorAll('.filters button');
+  var items=document.querySelectorAll('#items li');
+  buttons.forEach(function(b){
+    b.addEventListener('click',function(){
+      buttons.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      var f=b.getAttribute('data-f');
+      items.forEach(function(li){li.hidden=(f!=='tutti'&&li.getAttribute('data-c')!==f)});
+    });
+  });
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
