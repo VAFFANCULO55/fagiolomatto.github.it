@@ -3,154 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fagiolo Matto – Bottega alimentare di quartiere</title>
-<meta name="description" content="Fagiolo Matto è la bottega dove trovi un po’ di tutto: frutta, pane, salumi, formaggi, dispensa, bevande e prodotti per la casa.">
+<title>Fagiolo Matto – Fai la spesa, stampa lo scontrino</title>
+<meta name="description" content="Fagiolo Matto, bottega alimentare: scegli i prodotti, guarda lo scontrino che si compila e manda l’ordine su WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;900&family=Karla:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#eef3e2; --ink:#1b2a1f; --green:#1f4d3a; --beet:#b3124f; --mustard:#f2b705; --paper:#fbfdf6;
-  --head:"Bricolage Grotesque","Trebuchet MS",sans-serif; --body:"Figtree","Segoe UI",Arial,sans-serif;
+  --cobalt:#1f2fd1; --butter:#ffe45e; --pink:#ff8fb1; --ink:#0d0f3a; --lilac:#f1eeff; --white:#fff;
+  --head:"Unbounded","Arial Black",Impact,sans-serif; --body:"Karla","Segoe UI",Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--body)}
+body{margin:0;background:var(--lilac);color:var(--ink);font:400 1.05rem/1.55 var(--body)}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--beet);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
-h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.02}
 
-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0}
-.logo{font:800 1.35rem var(--head);text-decoration:none;color:var(--green)}
-nav a{margin-left:1.25rem;text-decoration:none;font-weight:600}
-nav a:hover{color:var(--beet)}
+.top{background:var(--cobalt);color:var(--butter)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+.logo{font:900 1.05rem var(--head);text-decoration:none}
+.bar a.link{color:var(--white);font-weight:700;text-decoration:none;border-bottom:2px solid var(--pink)}
+.hero{padding:3rem 0 5rem}
+.hero h1{font-weight:900;font-size:clamp(2.6rem,11vw,8rem);letter-spacing:-.04em}
+.hero p{color:var(--white);max-width:32rem;font-size:1.2rem;margin:1.5rem 0 0}
+.stamp{position:relative;display:inline-block;margin-top:2rem;background:var(--pink);color:var(--ink);font:900 .9rem var(--head);padding:.9rem 1.2rem;border-radius:50%;transform:rotate(-8deg);text-align:center;line-height:1.15}
 
-.hero{padding:3rem 0 4rem}
-.hero h1{font-size:clamp(3rem,11vw,7.5rem);font-weight:800;color:var(--green);letter-spacing:-.03em}
-.hero h1 span{display:block;color:var(--beet)}
-.hero p{max-width:34rem;font-size:1.2rem;margin:1.5rem 0 2rem}
-.btn{display:inline-block;background:var(--green);color:#fff;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none}
-.btn:hover{background:var(--beet)}
-.tag{display:inline-block;background:var(--mustard);padding:.35rem .9rem;border-radius:6px;font-weight:600;transform:rotate(-2deg);margin-bottom:1.25rem}
+.shop{padding:3rem 0 4rem}
+.shop h2,.info h2{font-weight:900;font-size:clamp(1.7rem,4.5vw,2.8rem);margin-bottom:.5rem}
+.lead{margin:0 0 2rem;max-width:34rem}
+.layout{display:grid;gap:2rem;align-items:start}
+@media(min-width:880px){.layout{grid-template-columns:1fr 340px}.receipt{position:sticky;top:1rem}}
 
-section{padding:3.5rem 0}
-.shelf{background:var(--green);color:#fff;border-radius:28px 28px 0 0}
-.shelf h2,.info h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.5rem}
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
-.filters button{font:600 1rem var(--body);border:2px solid #fff;background:transparent;color:#fff;padding:.45rem 1.1rem;border-radius:999px;cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--mustard);border-color:var(--mustard);color:var(--ink)}
-.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
-.items li{background:var(--paper);color:var(--ink);border-radius:14px;padding:1rem 1.1rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
-.items li[hidden]{display:none}
-.items b{font-family:var(--head);font-size:1.1rem}
-.items small{display:block;color:#51604f}
-.price{font:800 1.15rem var(--head);color:var(--beet);white-space:nowrap}
+.cat{margin-bottom:2rem}
+.cat h3{font-size:1rem;font-weight:900;background:var(--ink);color:var(--butter);display:inline-block;padding:.45rem .9rem;border-radius:999px;margin-bottom:.75rem}
+.row{display:flex;align-items:center;gap:.75rem;padding:.7rem 0;border-bottom:2px solid var(--ink)}
+.row .nm{flex:1}
+.row b{display:block;font-weight:700}
+.row small{color:#4a4d7a}
+.row .pr{font:900 1rem var(--head)}
+.add{width:2.6rem;height:2.6rem;border:0;border-radius:50%;background:var(--cobalt);color:var(--white);font:900 1.4rem/1 var(--head);cursor:pointer}
+.add:hover{background:var(--ink)}
 
-.info .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
-.info h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--green)}
+.receipt{background:var(--white);padding:1.4rem 1.3rem 2rem;font-family:"Courier New",Courier,monospace;font-size:.95rem;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),95% 100%,90% calc(100% - 12px),85% 100%,80% calc(100% - 12px),75% 100%,70% calc(100% - 12px),65% 100%,60% calc(100% - 12px),55% 100%,50% calc(100% - 12px),45% 100%,40% calc(100% - 12px),35% 100%,30% calc(100% - 12px),25% 100%,20% calc(100% - 12px),15% 100%,10% calc(100% - 12px),5% 100%,0 calc(100% - 12px))}
+.receipt h3{font-size:1.1rem;text-align:center;margin-bottom:.2rem}
+.receipt .sub{text-align:center;margin:0 0 1rem;border-bottom:2px dashed var(--ink);padding-bottom:.8rem}
+.line{display:flex;gap:.5rem;align-items:center;padding:.25rem 0}
+.line span:nth-child(2){flex:1}
+.line button{border:1px solid var(--ink);background:transparent;border-radius:4px;width:1.6rem;height:1.6rem;cursor:pointer;font:inherit;line-height:1}
+.empty{margin:1rem 0;color:#4a4d7a}
+.tot{display:flex;justify-content:space-between;border-top:2px dashed var(--ink);margin-top:.8rem;padding-top:.8rem;font-weight:700;font-size:1.15rem}
+.send{display:block;margin-top:1.2rem;text-align:center;background:var(--butter);color:var(--ink);font:900 .85rem var(--head);padding:.9rem;border-radius:999px;text-decoration:none;border:2px solid var(--ink)}
+.send[aria-disabled="true"]{opacity:.4;pointer-events:none}
+
+.info{background:var(--pink);padding:3.5rem 0}
+.info .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem;margin-top:1.5rem}
+.info h3{font-size:1rem;font-weight:900;margin-bottom:.5rem}
 .info ul{list-style:none;margin:0;padding:0}
-.info li{display:flex;justify-content:space-between;border-bottom:1px dashed #9cae9a;padding:.3rem 0}
-
-footer{background:var(--ink);color:#d9e4d3;padding:2rem 0;font-size:.95rem}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.info li{display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:2px solid var(--ink)}
+footer{background:var(--ink);color:var(--lilac);padding:1.8rem 0;font-size:.95rem}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <a class="logo" href="#">Fagiolo Matto</a>
-    <nav><a href="#reparti">Reparti</a><a href="#info">Orari e contatti</a></nav>
-  </header>
-
-  <main>
-    <div class="hero">
-      <span class="tag">Bottega di quartiere</span>
-      <h1>Un po’ di tutto,<span>quasi matto.</span></h1>
-      <p>Frutta di stagione, pane caldo, formaggi, pasta, bevande e tutto quello che ti serve per la casa. Passa a trovarci o chiedi la spesa a domicilio.</p>
-      <a class="btn" href="#reparti">Guarda i reparti</a>
+<div class="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="#">FAGIOLO MATTO</a>
+      <a class="link" href="#spesa">Fai la spesa</a>
     </div>
-  </main>
+    <div class="hero">
+      <h1>Un po’ di tutto.<br>Davvero.</h1>
+      <p>Frutta, pane, formaggi, dispensa, bevande e roba per la casa. Scegli quello che ti serve e lo scontrino si compila da solo.</p>
+      <div class="stamp">Ritiro in<br>negozio<br>o a casa</div>
+    </div>
+  </div>
 </div>
 
-<section class="shelf" id="reparti">
+<section class="shop" id="spesa">
   <div class="wrap">
-    <h2>Cosa trovi da noi</h2>
-    <div class="filters" role="group" aria-label="Filtra per reparto">
-      <button type="button" data-f="tutti" aria-pressed="true">Tutti</button>
-      <button type="button" data-f="frutta" aria-pressed="false">Frutta e verdura</button>
-      <button type="button" data-f="pane" aria-pressed="false">Pane e dolci</button>
-      <button type="button" data-f="salumi" aria-pressed="false">Salumi e formaggi</button>
-      <button type="button" data-f="dispensa" aria-pressed="false">Dispensa</button>
-      <button type="button" data-f="bevande" aria-pressed="false">Bevande</button>
-      <button type="button" data-f="casa" aria-pressed="false">Casa</button>
+    <h2>La tua spesa</h2>
+    <p class="lead">Premi + vicino a un prodotto per aggiungerlo. Quando hai finito, manda l’ordine su WhatsApp.</p>
+    <div class="layout">
+      <div id="list"></div>
+      <aside class="receipt" aria-live="polite">
+        <h3>FAGIOLO MATTO</h3>
+        <p class="sub">Scontrino non fiscale</p>
+        <div id="lines"></div>
+        <div class="tot"><span>TOTALE</span><span id="total">0,00 €</span></div>
+        <a class="send" id="send" href="#" aria-disabled="true">Manda l’ordine su WhatsApp</a>
+      </aside>
     </div>
-    <ul class="items" id="items">
-      <li data-c="frutta"><span><b>Mele rosse</b><small>al kg</small></span><span class="price">2,20 €</span></li>
-      <li data-c="frutta"><span><b>Pomodori datterini</b><small>al kg</small></span><span class="price">3,90 €</span></li>
-      <li data-c="frutta"><span><b>Insalata fresca</b><small>a cespo</small></span><span class="price">1,50 €</span></li>
-      <li data-c="pane"><span><b>Pane a lievitazione lenta</b><small>500 g</small></span><span class="price">2,80 €</span></li>
-      <li data-c="pane"><span><b>Biscotti al burro</b><small>confezione 300 g</small></span><span class="price">3,20 €</span></li>
-      <li data-c="pane"><span><b>Crostata di albicocche</b><small>intera</small></span><span class="price">9,50 €</span></li>
-      <li data-c="salumi"><span><b>Prosciutto cotto</b><small>all’etto</small></span><span class="price">2,60 €</span></li>
-      <li data-c="salumi"><span><b>Parmigiano stagionato</b><small>all’etto</small></span><span class="price">3,40 €</span></li>
-      <li data-c="salumi"><span><b>Mozzarella</b><small>125 g</small></span><span class="price">1,30 €</span></li>
-      <li data-c="dispensa"><span><b>Pasta di semola</b><small>500 g</small></span><span class="price">1,40 €</span></li>
-      <li data-c="dispensa"><span><b>Olio extravergine</b><small>bottiglia 750 ml</small></span><span class="price">8,90 €</span></li>
-      <li data-c="dispensa"><span><b>Passata di pomodoro</b><small>barattolo 700 g</small></span><span class="price">1,70 €</span></li>
-      <li data-c="bevande"><span><b>Acqua naturale</b><small>confezione da 6</small></span><span class="price">2,10 €</span></li>
-      <li data-c="bevande"><span><b>Succo di pera</b><small>bottiglia 1 l</small></span><span class="price">2,40 €</span></li>
-      <li data-c="bevande"><span><b>Vino rosso della casa</b><small>bottiglia 75 cl</small></span><span class="price">6,50 €</span></li>
-      <li data-c="casa"><span><b>Detersivo per piatti</b><small>flacone 1 l</small></span><span class="price">2,30 €</span></li>
-      <li data-c="casa"><span><b>Carta da cucina</b><small>2 rotoli</small></span><span class="price">2,00 €</span></li>
-      <li data-c="casa"><span><b>Sacchetti per l’umido</b><small>20 pezzi</small></span><span class="price">1,60 €</span></li>
-    </ul>
   </div>
 </section>
 
 <section class="info" id="info">
   <div class="wrap">
-    <h2>Vieni a trovarci</h2>
+    <h2>Passa a trovarci</h2>
     <div class="grid">
       <div>
         <h3>Orari</h3>
         <ul>
-          <li><span>Lunedì – Venerdì</span><span>8:00 – 19:30</span></li>
+          <li><span>Lun – Ven</span><span>8:00 – 19:30</span></li>
           <li><span>Sabato</span><span>8:00 – 13:00</span></li>
           <li><span>Domenica</span><span>chiuso</span></li>
         </ul>
       </div>
       <div>
-        <h3>Dove siamo</h3>
+        <h3>Indirizzo</h3>
         <p>Via dei Girasoli 12<br>00000 La tua città</p>
       </div>
       <div>
         <h3>Contatti</h3>
-        <p>Tel. <a href="tel:+390000000000">00 0000 0000</a><br>
-        <a href="mailto:ciao@fagiolomatto.it">ciao@fagiolomatto.it</a></p>
+        <p>Tel. <a href="tel:+390000000000">00 0000 0000</a><br><a href="mailto:ciao@fagiolomatto.it">ciao@fagiolomatto.it</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">© <span id="y">2026</span> Fagiolo Matto. Prezzi indicativi, possono variare in negozio.</div>
-</footer>
+<footer><div class="wrap">© <span id="y">2026</span> Fagiolo Matto. Prezzi indicativi, possono variare in negozio.</div></footer>
 
 <script>
 (function(){
-  var buttons=document.querySelectorAll('.filters button');
-  var items=document.querySelectorAll('#items li');
-  buttons.forEach(function(b){
-    b.addEventListener('click',function(){
-      buttons.forEach(function(x){x.setAttribute('aria-pressed','false')});
-      b.setAttribute('aria-pressed','true');
-      var f=b.getAttribute('data-f');
-      items.forEach(function(li){li.hidden=(f!=='tutti'&&li.getAttribute('data-c')!==f)});
-    });
+  var WHATSAPP="390000000000"; // metti qui il numero del negozio con prefisso, senza + e senza spazi
+  var P=[
+    ["Frutta e verdura","Mele rosse","al kg",220],["Frutta e verdura","Pomodori datterini","al kg",390],["Frutta e verdura","Insalata fresca","a cespo",150],
+    ["Pane e dolci","Pane a lievitazione lenta","500 g",280],["Pane e dolci","Biscotti al burro","300 g",320],["Pane e dolci","Crostata di albicocche","intera",950],
+    ["Salumi e formaggi","Prosciutto cotto","all’etto",260],["Salumi e formaggi","Parmigiano stagionato","all’etto",340],["Salumi e formaggi","Mozzarella","125 g",130],
+    ["Dispensa","Pasta di semola","500 g",140],["Dispensa","Olio extravergine","750 ml",890],["Dispensa","Passata di pomodoro","700 g",170],
+    ["Bevande","Acqua naturale","6 bottiglie",210],["Bevande","Succo di pera","1 l",240],["Bevande","Vino rosso della casa","75 cl",650],
+    ["Casa","Detersivo per piatti","1 l",230],["Casa","Carta da cucina","2 rotoli",200],["Casa","Sacchetti per l’umido","20 pezzi",160]
+  ];
+  var cart={};
+  var eur=new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"});
+  var list=document.getElementById("list"),lines=document.getElementById("lines"),totalEl=document.getElementById("total"),send=document.getElementById("send");
+
+  var html="",last="";
+  P.forEach(function(p,i){
+    if(p[0]!==last){ if(last) html+="</div>"; html+='<div class="cat"><h3>'+p[0]+'</h3>'; last=p[0]; }
+    html+='<div class="row"><div class="nm"><b>'+p[1]+'</b><small>'+p[2]+'</small></div><span class="pr">'+eur.format(p[3]/100)+'</span><button class="add" type="button" data-i="'+i+'" aria-label="Aggiungi '+p[1]+'">+</button></div>';
   });
-  document.getElementById('y').textContent=new Date().getFullYear();
+  list.innerHTML=html+"</div>";
+
+  function render(){
+    var out="",tot=0,msg=[];
+    Object.keys(cart).forEach(function(k){
+      var q=cart[k],p=P[k]; if(!q) return;
+      var s=q*p[3]; tot+=s; msg.push(q+" x "+p[1]+" ("+p[2]+")");
+      out+='<div class="line"><span>'+q+'×</span><span>'+p[1]+'</span><span>'+eur.format(s/100)+'</span><button type="button" data-m="'+k+'" aria-label="Togli '+p[1]+'">−</button></div>';
+    });
+    lines.innerHTML=out||'<p class="empty">Lo scontrino è vuoto. Aggiungi qualcosa dalla lista.</p>';
+    totalEl.textContent=eur.format(tot/100);
+    if(tot){
+      send.setAttribute("aria-disabled","false");
+      send.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Ciao! Vorrei ordinare:\n"+msg.join("\n")+"\nTotale: "+eur.format(tot/100));
+    }else{
+      send.setAttribute("aria-disabled","true"); send.href="#";
+    }
+  }
+
+  document.addEventListener("click",function(e){
+    var a=e.target.closest("[data-i]"),m=e.target.closest("[data-m]");
+    if(a){ var i=a.getAttribute("data-i"); cart[i]=(cart[i]||0)+1; render(); }
+    if(m){ var j=m.getAttribute("data-m"); cart[j]=Math.max(0,(cart[j]||0)-1); render(); }
+  });
+  document.getElementById("y").textContent=new Date().getFullYear();
+  render();
 })();
 </script>
 </body>
